@@ -9,5 +9,6 @@ export interface Member {
     isManager: boolean
     daysOff: number
     availableDays: number
+    onPs: boolean
     jiraCardsAssigned: string[]
 }
