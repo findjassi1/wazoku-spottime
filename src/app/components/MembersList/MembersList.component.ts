@@ -2,7 +2,7 @@ import { Component, Inject, Input, OnChanges } from '@angular/core';
 import { Member } from 'src/app/models/member';
 import { constants } from '../../constants';
 import { filterDevsAndQA, getMembers, MembersService } from '../../services/members.service';
-import { getSprintDaysDates, getTimeOff, TimeOffService } from '../../services/timeoff.service';
+import { getMembersIdsAndDaysOffMap, getSprintEndDate, getTimeOff, TimeOffService } from '../../services/timeoff.service';
 
 @Component({
   selector: 'members-list',
@@ -55,11 +55,13 @@ export class MembersListComponent implements OnChanges {
       this.setMembersWithTimeOff(this.allDevsAndQA, devsAndQAWithDaysOffMap)
 
 
-      const sprintDatesList = getSprintDaysDates(this.sprintStartDate, this.sprintDays)
+      const sprintEndDate = getSprintEndDate(this.sprintStartDate, this.sprintDays)
 
-      this.timeoffService.getTimeOff().subscribe(
-        () => {
-          
+      this.timeoffService.getTimeOff(this.sprintStartDate, sprintEndDate).subscribe(
+        (timeoff) => {
+          const devsAndQAWithDaysOffMap = getMembersIdsAndDaysOffMap(timeoff)
+
+          this.setMembersWithTimeOff(this.allDevsAndQA, devsAndQAWithDaysOffMap)          
         },
         error => {
           console.log(error)

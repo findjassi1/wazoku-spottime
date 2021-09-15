@@ -33,13 +33,16 @@ const timeoffUrl = 'https://api.hibob.com/v1/timeoff/outtoday'
 //     });
 // }
 
-export const getTimeOff = (startDate, sprintDays) => {
+export const getTimeOff = (startDate, endDate) => {
     // getSprintDaysDates(startDate, sprintDays) first //e.g. '2021-09-08', 20
-    return getMembersIdsAndDaysOffMap()
+    // console.log('--> ', getDateAfterSpecificDays('2021-09-08', 20))
+    return getMembersIdsAndDaysOffMap(getDaysOffForMembers())
 }
 
+
+export const getSprintEndDate = (startDate, sprintDays) => getStringFromDate(getDateAfterSpecificDays('2021-09-08', 20))
 /**
- * 1- concatenate responses
+ * 1- concatenate responses # not needed anymore
  * 2- filter the concatenated response to have only devs & qa
  * 3- reduce this one response to a new map with members ids and days off
  */
@@ -70,8 +73,8 @@ const getDaysOffForMembers = () => {
  return allDaysOffMembers
 }
 
-const filterDevsAndQAByID = () => {
-    return getDaysOffForMembers().filter(dayOff => {
+const filterDevsAndQAByID = (timeoffList) => {
+    return timeoffList.filter(dayOff => {
         return members.employees.findIndex(member => (
             member.id == dayOff.employeeId
             && isDevOrQA(member)
@@ -80,9 +83,9 @@ const filterDevsAndQAByID = () => {
 }
 
 
-const getMembersIdsAndDaysOffMap = () => {
+export const getMembersIdsAndDaysOffMap = (timeoffList) => {
     const map = {}
-    filterDevsAndQAByID().forEach(x => map[x.employeeId] = (map[x.employeeId] || 0) + 1 )
+    filterDevsAndQAByID(timeoffList).forEach(x => map[x.employeeId] = (map[x.employeeId] || 0) + 1 )
 
     return map
 }
@@ -117,6 +120,12 @@ export const getSprintDaysDates = (startDate, sprintDays) => {
     return dates
 }
 
+const getDateAfterSpecificDays = (date, days) => {
+    const allSprintDates = getSprintDaysDates(date, days)
+
+    return allSprintDates[allSprintDates.length - 1]
+}
+
 import {Inject, Injectable} from '@angular/core'
 import {HttpClient, HttpHeaders} from '@angular/common/http'
 import {Observable} from 'rxjs'
@@ -126,7 +135,7 @@ import {take} from 'rxjs/operators'
   providedIn: 'root',
 })
 export class TimeOffService {
-  private readonly timeoffUrl = 'https://api.hibob.com/v1/timeoff/outtoday'
+  private timeoffUrl = 'https://api.hibob.com/v1/timeoff/whosout'
 
   private readonly headers = {
     headers: new HttpHeaders(),
@@ -144,7 +153,8 @@ export class TimeOffService {
       this.headers['Access-Control-Allow-Methods'] = 'GET, DELETE, HEAD, OPTIONS'
   }
 
-  getTimeOff(): Observable<any> {
+  getTimeOff(startDate, endDate): Observable<any> {
+    this.timeoffUrl += `?from=${startDate}&to=${endDate}`
     return this.http.get<any>(this.timeoffUrl, this.headers).pipe(take(1))
   }
 }
