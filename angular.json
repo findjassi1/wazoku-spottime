@@ -67,8 +67,7 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "wazoku-spottime:build",
-            "proxyConfig": "src/proxy.conf.json"
+            "browserTarget": "wazoku-spottime:build"
           },
           "configurations": {
             "production": {

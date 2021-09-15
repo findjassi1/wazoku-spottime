@@ -19,6 +19,9 @@ export class MembersListComponent implements OnChanges {
   allDevsAndQA: []
   membersWithTimeOff: Member[]
 
+  developersShown: boolean = true
+  qasShown: boolean = false
+
   constructor(
     @Inject(MembersService) public membersService: MembersService,
     @Inject(TimeOffService) public timeoffService: TimeOffService,
@@ -71,6 +74,14 @@ export class MembersListComponent implements OnChanges {
         }
       )
     }
+  }
+
+  get developersList(): Array<{}> {
+    return this.membersWithTimeOff.filter(x => x.department === 'Development')
+  }
+
+  get qasList(): Array<{}> {
+    return this.membersWithTimeOff.filter(x => x.department === 'Product')
   }
 
   setMembersWithTimeOff(allDevsAndQA, devsAndQAWithDaysOffMap): void {

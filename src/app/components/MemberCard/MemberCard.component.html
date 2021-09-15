@@ -16,11 +16,15 @@
         [counterNumber]="member.availableDays" 
         [counterLabel]="'Available Days'"
     ></number-counter>
+    <number-counter 
+        [counterNumber]="estimatedFor" 
+        [counterLabel]="'Assigned Days'"
+    ></number-counter>
     <jira-card-input 
-        [memberAvailable]="member.availableDays !== 0"
+        [memberAvailable]="isMemberAvailable"
         (jiraCardAdded)="addJiraCard($event)"
     ></jira-card-input>
-    <div class="labels-container">
+    <div *ngIf="isMemberAvailable" class="labels-container">
         <div *ngFor="let label of jiraCards">
             <jira-card-label 
                 [cardNumber]="label"
@@ -34,4 +38,9 @@
             class="delete-icon" 
         />
     </button>
+    <input type="checkbox"
+        id="on_ps"
+        name="onPs"
+        [checked]="onPs"
+        (change)="onPsChecked(!onPs)" />
 </div>
