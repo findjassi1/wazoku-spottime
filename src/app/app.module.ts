@@ -10,6 +10,7 @@ import { NumberCounterComponent } from './components/NumberCounter/NumberCounter
 import { JiraCardInputComponent } from './components/JiraCardInput/JiraCardInput.component';
 import { JiraCardLabelComponent } from './components/JiraCardLabel/JiraCardLabel.component';
 import { SprintStartDateComponent } from './components/SprintStartDate/SprintStartDate.component';
+import { TooltipModule } from 'ng2-tooltip-directive'
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { SprintStartDateComponent } from './components/SprintStartDate/SprintSta
   imports: [
     BrowserModule,
     HttpClientModule,
+    TooltipModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

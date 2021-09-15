@@ -1,7 +1,7 @@
 .start-date {
     border-radius: 19px;
     border: #007CBE solid 1px;
-    width: 100%;
+    max-width: 330px;
     height: 38px;
     font-size: 18px;
     font-weight: lighter;
@@ -9,25 +9,24 @@
     background-color: #fff;
 }
 .start-date-label {
-    width: 100%;
     font-weight: bold;
     color: #000;
     font-size: 18px;
+    margin-right: 10px;
 }
 .date-container {
     display: flex; 
-     width: 40%;
     align-items: center;
     justify-content: flex-start;
 }
 .date-subcontainer {
-    display: flex; 
+    display: inline-flex; 
     /* width: 80%; */
     align-items: center;
+    gap: 10px;
 }
 .apply-date {
     background-color: #007CBE;
-    margin-left: 20px;
     border-radius: 30px;
     max-height: 40px;
     padding: 0px 30px 0px 30px;
@@ -39,13 +38,23 @@
     font-weight: bold;
 }
 .list-header-container {
-    display: flex; 
+    display: flex;
+    flex-wrap: wrap;
     align-items: center; 
-    justify-content: space-between;
     margin: 100px 15% 0 15%;
 }
+
+@media screen and (max-width: 1400px) {
+    .list-header-container {
+        margin: 100px 25px 20px;
+    }
+}
+
+.list-header-container > * {
+    margin-right: 20px;
+}
+
 .start-date-wrapper {
-    width: 20%; 
     display: flex; 
     align-items: center; 
     justify-content: flex-start;
@@ -54,8 +63,4 @@
     color: #007CBE; 
     font-size: 18px; 
     font-weight: bold;
-}
-.apply-btn-container {
-    width: 40%; 
-    justify-content: flex-end;
 }

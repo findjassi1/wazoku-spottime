@@ -16,3 +16,9 @@
 .members-list-container {
     padding: 30px 15% 20px 15%;
 }
+
+@media screen and (max-width: 1400px) {
+    .members-list-container {
+        padding: 30px 25px 20px;
+    }
+}
