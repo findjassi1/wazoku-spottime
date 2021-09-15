@@ -101,7 +101,7 @@ const getNextDate = date => {
     return date
 }
 
-const getSprintDaysDates = (startDate, sprintDays) => {
+export const getSprintDaysDates = (startDate, sprintDays) => {
     let date = new Date(startDate)
     let sprintDaysCounter = 0
     let dates = []
@@ -117,34 +117,34 @@ const getSprintDaysDates = (startDate, sprintDays) => {
     return dates
 }
 
-// import {Inject, Injectable} from '@angular/core'
-// import {HttpClient, HttpHeaders} from '@angular/common/http'
-// import {Observable} from 'rxjs'
-// import {take} from 'rxjs/operators'
+import {Inject, Injectable} from '@angular/core'
+import {HttpClient, HttpHeaders} from '@angular/common/http'
+import {Observable} from 'rxjs'
+import {take} from 'rxjs/operators'
 
-// @Injectable({
-//   providedIn: 'root',
-// })
-// export class MembersService {
-//   private readonly membersUrl = 'https://api.hibob.com/v1/members'
+@Injectable({
+  providedIn: 'root',
+})
+export class TimeOffService {
+  private readonly timeoffUrl = 'https://api.hibob.com/v1/timeoff/outtoday'
 
-//   private readonly headers = {
-//     headers: new HttpHeaders(),
-//   }
+  private readonly headers = {
+    headers: new HttpHeaders(),
+  }
 
-//   constructor(
-//     @Inject(HttpClient) private http: HttpClient,
-//   ) {}
+  constructor(
+    @Inject(HttpClient) private http: HttpClient,
+  ) {}
 
-//   ngOnInit(): void {
-//       this.headers['Authentication'] = constants.hibobToken
-//       this.headers['mode'] = 'no-cors'
-//       this.headers['Access-Control-Allow-Origin'] = 'http://localhost:4200/'
-//       this.headers['Access-Control-Allow-Credentials'] = 'true'
-//       this.headers['Access-Control-Allow-Methods'] = 'GET, DELETE, HEAD, OPTIONS'
-//   }
+  ngOnInit(): void {
+      this.headers['Authentication'] = constants.hibobToken
+      this.headers['mode'] = 'no-cors'
+      this.headers['Access-Control-Allow-Origin'] = 'http://localhost:4200/'
+      this.headers['Access-Control-Allow-Credentials'] = 'true'
+      this.headers['Access-Control-Allow-Methods'] = 'GET, DELETE, HEAD, OPTIONS'
+  }
 
-//   getMembers(): Observable<any> {
-//     return this.http.get<any>(this.membersUrl, this.headers).pipe(take(1))
-//   }
-// }
+  getTimeOff(): Observable<any> {
+    return this.http.get<any>(this.timeoffUrl, this.headers).pipe(take(1))
+  }
+}
