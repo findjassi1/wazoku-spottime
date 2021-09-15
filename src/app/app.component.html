@@ -1,13 +1,13 @@
 
 <div>
     <div class="app-header">
-        <img src="../assets/wazoku-logo.png" class="wazoku-logo" />
+        <img src="../assets/wazoku-spottime.png" class="wazoku-logo" />
     </div>
-    <sprint-start-date 
+    <sprint-start-date
         (dateApplied)="dateApplied($event)"
     ></sprint-start-date>
     <div class="members-list-container">
-        <members-list 
+        <members-list
             [sprintStartDate]="sprintStartDate"
             [sprintDays]="sprintDays"
         ></members-list>
