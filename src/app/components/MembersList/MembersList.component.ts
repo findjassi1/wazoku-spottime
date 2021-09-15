@@ -21,7 +21,8 @@ export class MembersListComponent implements OnChanges {
 
   ngOnInit(): void {
     this.allDevsAndQA = getMembers()
-    // the next 2 lines should be removed
+    // the next 2 lines should be removed,
+    // just for mocking purposes
     const devsAndQAWithDaysOffMap = getTimeOff('2021-09-08', 20)
 
     this.setMembersWithTimeOff(this.allDevsAndQA, devsAndQAWithDaysOffMap)

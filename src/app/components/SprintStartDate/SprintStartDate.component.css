@@ -38,3 +38,24 @@
     font-size: 18px;
     font-weight: bold;
 }
+.list-header-container {
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between;
+    margin: 100px 15% 0 15%;
+}
+.start-date-wrapper {
+    width: 20%; 
+    display: flex; 
+    align-items: center; 
+    justify-content: flex-start;
+}
+.sprint-days {
+    color: #007CBE; 
+    font-size: 18px; 
+    font-weight: bold;
+}
+.apply-btn-container {
+    width: 40%; 
+    justify-content: flex-end;
+}
