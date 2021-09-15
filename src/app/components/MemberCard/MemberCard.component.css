@@ -1,0 +1,23 @@
+.member-card-container {
+    background-color: #FFFFFF95; 
+    border-radius: 60px; 
+    margin: 0 0 20px 0; 
+    padding: 4px 30px 4px 4px; 
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.delete-icon {
+    width: 15.5px; 
+    height: 18.8px;
+}
+.labels-container {
+    margin: 0px 0px 0px 10px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.not-available {
+    background-color: #E8E8E8;
+}

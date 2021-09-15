@@ -1,0 +1,37 @@
+
+<div class="member-card-container"
+    [ngClass]="{'not-available' : member.availableDays === 0}">
+    <div style="width: 30%;">
+        <member-info 
+            [name]="member.displayName" 
+            [jobTitle]="member.title" 
+            [avatar]="member.avatarUrl"
+        ></member-info>
+    </div>
+    <number-counter 
+        [counterNumber]="member.daysOff" 
+        [counterLabel]="'Days Off'"
+    ></number-counter>
+    <number-counter 
+        [counterNumber]="member.availableDays" 
+        [counterLabel]="'Available Days'"
+    ></number-counter>
+    <jira-card-input 
+        [memberAvailable]="member.availableDays !== 0"
+        (jiraCardAdded)="addJiraCard($event)"
+    ></jira-card-input>
+    <div class="labels-container">
+        <div *ngFor="let label of jiraCards">
+            <jira-card-label 
+                [cardNumber]="label"
+                (cardRemoved)="removeJiraCard(label)"
+            ></jira-card-label>
+        </div>
+    </div>
+    <button class="delete-button" 
+        (click)="removeMember()">
+        <img src="../../../assets/delete.png" 
+            class="delete-icon" 
+        />
+    </button>
+</div>

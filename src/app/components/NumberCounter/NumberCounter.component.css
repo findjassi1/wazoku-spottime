@@ -1,0 +1,19 @@
+.counter-container {
+    display: flex;
+    flex-direction: column;
+    max-height: 80px !important;
+    align-items: center;
+    justify-content:flex-end;
+}
+.number {
+    font-size: 36px;
+    font-weight: bold;
+    color: #007CBE;
+    margin-bottom: 0;
+}
+.label {
+    font-size: 12px;
+    font-weight: lighter;
+    margin-top: 0;
+    padding-top: 0;
+}

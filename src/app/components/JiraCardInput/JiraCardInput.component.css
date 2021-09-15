@@ -1,0 +1,33 @@
+.input-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 19px;
+    border: #007CBE solid 1px;
+    width: 124px;
+    height: 38px;
+    padding: 0 2px 0 12px;
+}
+.jira-input {
+    font-size: 12px;
+    font-weight: lighter;
+    width: 70%;
+}
+.add-button {
+    width: 34px;
+    height: 34px;
+    border-radius: 17px;
+    background-color: #007CBE;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.add-icon {
+    font-size: 25px;
+    color: #FFF;
+}
+.not-available {
+    font-size: 15px;
+    font-weight: bold;
+}

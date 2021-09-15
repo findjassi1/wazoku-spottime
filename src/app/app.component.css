@@ -1,0 +1,17 @@
+.app-header {
+    background-color: #fff; 
+    padding: 0 15% 0 15%; 
+    border-bottom:lightgray solid 1px; 
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    right: 0;
+    width: 100%; 
+}
+.wazoku-logo {
+    height: 50px; 
+    margin: 10px 0 10px 0;
+}
+.members-list-container {
+    padding: 30px 15% 20px 15%;
+}

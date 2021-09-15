@@ -1,0 +1,12 @@
+
+<!-- <div *ngIf="membersWithTimeOff.length; else elseBlock"> -->
+    <div *ngFor="let member of membersWithTimeOff">
+        <member-card 
+            [member]="member"
+            (memberRemoved)="memberRemoved($event)"
+        ></member-card>
+    </div>
+<!-- </div> -->
+<!-- <ng-template #elseBlock>
+    <p class="empty-list-placeholder">Enter a Start date for the sprint to start.</p>
+</ng-template> -->

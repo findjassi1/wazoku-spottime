@@ -1,0 +1,25 @@
+.member-info-container {
+    display: flex;
+    flex-direction: row;
+}
+.avatar {
+    width: 85px; 
+    height: 85px; 
+    border-radius: 42.5px;
+    border: #007CBE solid 1px;
+    object-fit: cover;
+}
+.name-and-title {
+    margin-left: 20px;
+}
+.name {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 0;
+}
+.job-title {
+    font-size: 12px;
+    font-weight: 300;
+    margin-top: 5px;
+    padding-top: 0;
+}

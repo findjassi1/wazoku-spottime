@@ -1,0 +1,17 @@
+
+<div *ngIf="memberAvailable; else elseBlock">
+    <div class="input-container">
+        <input #newJiraCard 
+            type="text" 
+            class="jira-input" 
+            placeholder="Jira card no…"
+        />
+        <button class="add-button" 
+            (click)="addJiraCard()">
+            <p class="add-icon">+</p>
+        </button>
+    </div>
+</div>
+<ng-template #elseBlock>
+    <p class="not-available">THIS TEAM MEMBER HAS NO AVAILABILITY</p>
+</ng-template>
