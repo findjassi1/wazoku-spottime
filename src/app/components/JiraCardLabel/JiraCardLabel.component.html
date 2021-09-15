@@ -1,7 +1,16 @@
 
-<div class="label-container">
-    <p class="label">{{ cardNumber }}</p>
+<div
+    [tooltip]="popover"
+    theme="light"
+    contentType="template"
+    class="label-container"
+>
+    <a class="label" href="https://wazoku.atlassian.net/browse/IS-11171">{{ cardNumber }}</a>
     <button (click)="removeCard()">
         <p class="remove-icon">x</p>
     </button>
 </div>
+
+<ng-template #popover>
+    <p>Estimate: 3 days</p>
+</ng-template>
